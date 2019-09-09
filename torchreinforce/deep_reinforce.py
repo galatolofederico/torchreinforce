@@ -42,7 +42,7 @@ class DeepReinforceModule(nn.Module):
 
 
     def select_action(self, state, action_size):
-        state = torch.as_tensor(state, dtype=torch.float).unsqueeze(0)
+        state = torch.as_tensor(state, dtype=torch.float, device=self.device).unsqueeze(0)
         self.qnetwork_policy.eval()
         with torch.no_grad():
             action_values = self.qnetwork_policy(state)

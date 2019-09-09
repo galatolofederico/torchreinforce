@@ -12,6 +12,8 @@ import numpy as np
 from collections import deque
 from torchreinforce import DeepReinforceModule
 
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
 env = gym.make('LunarLander-v2')
 env.seed(0)
 
@@ -33,12 +35,16 @@ class DQN(nn.Module):
 
     def forward(self, x):
         return self.net(x)
+    
+    def to(self, device):
+        self.net = self.net.to(device)
+        return self
 
 
-policy = DQN(state_size, action_size)
-target = DQN(state_size, action_size)
+policy = DQN(state_size, action_size).to(device)
+target = DQN(state_size, action_size).to(device)
 
-agent = DeepReinforceModule(policy_net=policy, target_net=target)
+agent = DeepReinforceModule(policy_net=policy, target_net=target, device=device)
 
 scores_window = deque(maxlen=100)
 for i_episode in range(EPISODES):
