@@ -10,10 +10,10 @@ from .replay_memory import *
 class DeepReinforceModule(nn.Module):
     def __init__(self, policy_net, target_net, **kwargs):
         super(DeepReinforceModule, self).__init__()
-        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.seed = random.seed(kwargs.get("seed", 0))
         self.counter = 0
 
+        self.device = kwargs.get("device", torch.device("cpu"))
         self.gamma = kwargs.get("gamma", 0.99)
         self.tau = kwargs.get("tau", 1e-3)
         self.lr = kwargs.get("learning_rate", 5e-4)
