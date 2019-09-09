@@ -5,7 +5,9 @@ A pythonic implementation of the REINFORCE algorithm that is actually fun to use
 ## Installation
 You can install it with pip as you would for any other python package
 ```
-pip install torchreinforce
+git clone https://github.com/galatolofederico/torchreinforce
+cd torchreinforce
+python setup.py install
 ```
 
 ## Quickstart
