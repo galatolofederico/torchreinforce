@@ -59,7 +59,7 @@ for i_episode in range(EPISODES):
         state = next_state
         score += reward
     scores_window.append(score)
-    agent.epsilon_annealign()
+    agent.epsilon_annealing()
     print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)), end="")
     if i_episode % 100 == 0:
         print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)))

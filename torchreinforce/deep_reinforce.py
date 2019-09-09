@@ -71,5 +71,5 @@ class DeepReinforceModule(nn.Module):
         for target_param, local_param in zip(self.qnetwork_target.parameters(), self.qnetwork_policy.parameters()):
             target_param.data.copy_(self.tau*local_param.data + (1.0-self.tau)*target_param.data)
     
-    def epsilon_annealign(self):
+    def epsilon_annealing(self):
         self.epsilon = max(self.epsilon_max, self.epsilon*self.epsilon_decay)
