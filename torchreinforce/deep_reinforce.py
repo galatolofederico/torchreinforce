@@ -10,7 +10,6 @@ from .replay_memory import *
 class DeepReinforceModule(nn.Module):
     def __init__(self, policy_net, target_net, **kwargs):
         super(DeepReinforceModule, self).__init__()
-        self.seed = random.seed(kwargs.get("seed", 0))
         self.counter = 0
 
         self.device = kwargs.get("device", torch.device("cpu"))
