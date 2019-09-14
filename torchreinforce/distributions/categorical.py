@@ -3,7 +3,7 @@ from .base import ReinforceDistribution
 
 class Categorical(ReinforceDistribution, torch.distributions.Categorical):
     def __init__(self, probs, **kwargs):
-        self.deterministic = kwargs.get("deterministic", False)
+        self.deterministic = kwargs.pop("deterministic", False)
         self.probs = probs
         torch.distributions.Categorical.__init__(self, probs, **kwargs)
 
