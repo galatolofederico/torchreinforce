@@ -49,7 +49,7 @@ for i in range(EPISODES):
     if i%50 == 0:
         print("Episode: %d  loss: %f  total_reward: %d  reward_threshold: %d" % (i, loss.item(), total_reward, env.spec.reward_threshold))
 
-
+net.eval()
 observation = env.reset()
 net.reset()
 i = 0
